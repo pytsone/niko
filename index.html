@@ -4,72 +4,249 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101923">
-  <meta name="description" content="Świąteczna fanowska opowieść o Kevinie i Nikodemie dla małych odważnych czytelników.">
-  <title>Kevin i Nikodem — Wielka Świąteczna Przygoda</title>
+  <meta name="description" content="Filmowa, świąteczna opowieść o Kevinie i Nikodemie. Strona z rozdziałami, ilustracjami i promptami do generatora obrazów.">
+  <title>Kevin i Nikodem | Wielka świąteczna przygoda</title>
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#tresc">Przejdź do historii</a>
-  <div class="reading-progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <div class="reading-progress"><span id="progressBar"></span></div>
 
-  <header class="hero" id="start">
-    <div class="hero-sky" aria-hidden="true"></div>
+  <header class="hero" id="top">
+    <div class="hero-backdrop"></div>
     <div class="snow-layer" id="snowLayer" aria-hidden="true"></div>
-    <nav class="site-nav" aria-label="Nawigacja główna">
-      <a class="brand" href="#start"><span class="brand-mark" aria-hidden="true">✦</span><span>Opowieść świąteczna</span></a>
-      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Otwórz menu"><span></span><span></span><span></span></button>
-      <div class="nav-links" id="navLinks"><a href="#rozdzial-1">Rozdziały</a><a href="#bohaterowie">Bohaterowie</a><a href="#koniec">Zakończenie</a></div>
+
+    <nav class="site-nav page-width" aria-label="Nawigacja">
+      <a href="#top" class="brand">✦ Kevin & Nikodem</a>
+      <div class="nav-links" id="navLinks">
+        <a href="#rozdzial-1">Rozdziały</a>
+        <a href="#generator">Generacja grafiki</a>
+        <a href="#bohaterowie">Bohaterowie</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Pokaż menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
+
     <div class="hero-content page-width">
       <div class="hero-copy">
-        <p class="eyebrow"><span></span> Świąteczna opowieść fanowska</p>
-        <h1>Kevin i Nikodem:<br><em>Wielka Przygoda</em></h1>
-        <p class="hero-description">Niezwykła zimowa historia o przyjaźni, odwadze i tym, że o pomoc zawsze warto poprosić.</p>
-        <div class="hero-actions"><a class="button button-gold" href="#rozdzial-1">Czytaj opowieść <span aria-hidden="true">↓</span></a><button class="button button-glass" id="snowToggle" type="button" aria-pressed="true">❄ Śnieg: włączony</button></div>
-        <div class="hero-meta"><span>5 rozdziałów</span><span aria-hidden="true">•</span><span>Dla małych odważnych czytelników</span></div>
+        <p class="eyebrow">Świąteczna opowieść fanowska</p>
+        <h1>Kevin i Nikodem:<br><span>Wielka przygoda</span></h1>
+        <p class="lead">Wcielamy się w klimat klasycznej świątecznej komedii: zimowy dom, śnieg, przyjaźń, odwaga i mały, wielki plan na bezpieczeństwo.</p>
+        <div class="cta-row">
+          <a class="button button-gold" href="#rozdzial-1">Czytaj historię</a>
+          <button class="button button-glass" id="snowToggle" type="button">❄ Śnieg: włączony</button>
+        </div>
+        <div class="hero-meta">
+          <span>5 rozdziałów</span>
+          <span>•</span>
+          <span>Filmowy klimat</span>
+          <span>•</span>
+          <span>Świąteczny humor</span>
+        </div>
       </div>
-      <div class="poster" aria-label="Ilustracja świątecznego domu nocą">
-        <div class="poster-stars" aria-hidden="true">✦　·　✧　·　✦</div><div class="moon" aria-hidden="true"></div>
-        <div class="poster-title">Zimowa<br>przygoda</div>
-        <div class="poster-house" aria-hidden="true"><div class="roof"></div><div class="house-body"><div class="window window-left"></div><div class="window window-right"></div><div class="door"></div></div><div class="snowbank"></div></div>
-        <div class="poster-caption">Jedna noc. Dwóch przyjaciół. Wielkie serca.</div>
+
+      <div class="poster-scene" aria-label="Filmowa ilustracja domu w śniegu">
+        <div class="poster-sun"></div>
+        <div class="poster-stars">✦ ✦ ✦</div>
+        <div class="poster-house">
+          <div class="roof"></div>
+          <div class="body">
+            <span class="window left"></span>
+            <span class="window right"></span>
+            <span class="door"></span>
+          </div>
+          <div class="snow"></div>
+        </div>
+        <div class="poster-text">
+          <strong>Świąteczna</strong>
+          <span>Przygoda</span>
+        </div>
       </div>
     </div>
-    <a class="scroll-cue" href="#tresc" aria-label="Przewiń do opowieści"><span></span></a>
   </header>
 
-  <main id="tresc">
-    <section class="intro page-width"><div class="intro-label">Zanim zaczniemy</div><p>To nowa, fanowska przygoda inspirowana świątecznym klimatem znanej komedii. Kevin i Nikodem stają przed niespodziewanym wyzwaniem — a najlepszym planem okazują się spokój, przyjaźń i wezwanie zaufanego dorosłego.</p></section>
-    <div class="reading-tools page-width" aria-label="Ustawienia czytania"><span class="tools-label">Ustawienia czytania</span><div class="tool-buttons"><button id="textSmaller" type="button" aria-label="Zmniejsz tekst">A−</button><button id="textLarger" type="button" aria-label="Powiększ tekst">A+</button><button id="printPage" type="button">Drukuj opowieść</button></div></div>
+  <main>
+    <section class="intro page-width">
+      <p class="intro-label">Zanim zaczniemy</p>
+      <p class="intro-text">To fanowska, nieoficjalna historia z klimatem klasycznej komedii świątecznej — z mocnym napięciem, odwagą, przyjaźnią i małym, mądrym planem, który uratuje rodzinny dom przed chaos i śnieżną niespodzianką.</p>
+    </section>
+
+    <div class="reading-tools page-width" aria-label="Narzędzia czytania">
+      <span>Ustawienia czytania</span>
+      <div class="tools-group">
+        <button id="textSmaller" type="button">A−</button>
+        <button id="textLarger" type="button">A+</button>
+        <button id="printPage" type="button">Drukuj</button>
+      </div>
+    </div>
 
     <section class="chapters page-width" aria-label="Rozdziały opowieści">
       <article class="chapter" id="rozdzial-1">
-        <div class="chapter-art scene-chaos" role="img" aria-label="Świąteczny dom pełen walizek i pośpiechu"><span class="scene-kicker">Scena 01</span><span class="scene-label">Wieczór przed podróżą</span><div class="art-house" aria-hidden="true"><span class="art-window"></span><span class="art-door"></span><span class="art-roof"></span></div><span class="art-suitcase" aria-hidden="true">▰</span><span class="art-sparkle" aria-hidden="true">✦</span></div>
-        <div class="chapter-content"><div class="chapter-number">Rozdział 01 <span>—</span> Zaczyna się przygoda</div><h2>Rodzinny chaos level mistrzowski</h2><p>W domu McCallisterów panował taki harmider, że nawet zegar na ścianie wyglądał na zmęczonego. Wszędzie stały walizki, leżały szaliki, a rodzina szykowała się do wielkiej podróży.</p><p>Kevin próbował przejść do kuchni po kawałek pizzy, ale potknął się o torbę. Kolacja wylądowała na koszuli wujka Franka, a w pokoju wybuchła kolejna kłótnia. Kevin miał dość zamieszania i marzył o chwili ciszy.</p><p>Na strychu przypomniał sobie o Nikodemie, swoim dobrym koledze. „Jutro mu wszystko opowiem” — pomyślał i zasnął, nie wiedząc, jak niezwykły będzie poranek.</p><div class="chapter-quote">Czasem wielka przygoda zaczyna się od zwykłego: „Mam już dość!”</div></div>
+        <div class="chapter-visual visual-chaos">
+          <div class="chapter-badge">Scena 01</div>
+          <div class="chapter-caption">Rodzinny chaos</div>
+          <div class="mini-house">
+            <div class="mini-roof"></div>
+            <div class="mini-body"><span class="mini-window left"></span><span class="mini-window right"></span><span class="mini-door"></span></div>
+          </div>
+          <div class="bag bag-one"></div>
+          <div class="bag bag-two"></div>
+          <div class="spark spark-one">✦</div>
+        </div>
+        <div class="chapter-text">
+          <p class="chapter-number">Rozdział 1</p>
+          <h2>Rodzinny chaos level mistrzowski</h2>
+          <p>W domu McCallisterów panował taki harmider, że nawet zegar na ścianie wyglądał na zmęczonego. Walizki, kurtki, czapki i przytłaczające odgłosy dzieci i dorosłych sprawiały, że nawet świąteczny poranek wyglądał jak wojna.</p>
+          <p>Kevin próbował przejść do kuchni po pizzę, ale potknął się o torbę i rozlał swój posiłek na koszulę wujka Franka. Wszyscy zaczęli krzyczeć, a on — wyczerpany i zmęczony tłumem — wykrzyknął to, co wielu dzieci myśli w stresie: „Chciałbym, żeby nikt tu nie był”.</p>
+          <p>Na strychu poskarżył się Nikodemu w myślach i zasnął z przekonaniem, że to będzie tylko kolejny, nieprzyjemny dzień. A jednak noc miała przynieść mu coś niezwykłego.</p>
+        </div>
       </article>
-      <article class="chapter chapter-reverse" id="rozdzial-2">
-        <div class="chapter-art scene-morning" role="img" aria-label="Cichy, śnieżny poranek przy domu"><span class="scene-kicker">Scena 02</span><span class="scene-label">Najcichszy poranek</span><div class="sunrise" aria-hidden="true"></div><div class="art-house" aria-hidden="true"><span class="art-window"></span><span class="art-door"></span><span class="art-roof"></span></div><span class="art-snow" aria-hidden="true">❄</span></div>
-        <div class="chapter-content"><div class="chapter-number">Rozdział 02 <span>—</span> Cisza w całym domu</div><h2>Najcichszy poranek świata</h2><p>Kevin obudził się wcześnie. W domu było cicho. Za cicho. Zszedł po schodach i zajrzał do kuchni, salonu, a nawet do pokoju, w którym zwykle ktoś rozmawiał przez telefon. Nikogo nie było.</p><p>Najpierw Kevin poczuł strach. Potem zaczął myśleć o śniadaniu z lodami, wolnym wyborze programu i całym domu tylko dla siebie. Ale gdy minęła pierwsza godzina, cisza przestała być taka zabawna.</p><p>Kevin zadzwonił do Nikodema. Kolega wysłuchał go uważnie i poradził, żeby został w domu, nie otwierał drzwi obcym i skontaktował się z zaufanym dorosłym. Kevin posłuchał — i od razu poczuł się pewniej.</p><div class="chapter-quote">Odwaga nie oznacza, że nie czujesz strachu. Oznacza, że mądrze działasz.</div></div>
+
+      <article class="chapter reverse" id="rozdzial-2">
+        <div class="chapter-visual visual-morning">
+          <div class="chapter-badge">Scena 02</div>
+          <div class="chapter-caption">Najcichszy poranek</div>
+          <div class="sun"></div>
+          <div class="mini-house small">
+            <div class="mini-roof"></div>
+            <div class="mini-body"><span class="mini-window left"></span><span class="mini-window right"></span><span class="mini-door"></span></div>
+          </div>
+          <div class="flake flake-one">❄</div>
+          <div class="flake flake-two">❄</div>
+        </div>
+        <div class="chapter-text">
+          <p class="chapter-number">Rozdział 2</p>
+          <h2>Najcichszy poranek świata</h2>
+          <p>Kevin obudził się wcześnie. W domu było tak cicho, że aż niepokojąco. Żadnych krzyków, żadnego biegania po korytarzu, żadnych wrzasków przy śniadaniu. Chłopiec zszedł na dół jak do tajnej misji, a potem rozbłysło w nim ogromne szczęście.</p>
+          <p>„Jestem sam w domu!” — krzyknął i od razu zaczął planować, co zrobi najpierw. Lody na śniadanie, telewizja, ganianie po całym domu i cicha, piękna wolność. Ale kiedy minęło pierwsze zaskoczenie, przypomniał sobie, że przyjaźń ma większą wartość niż kolejne przyjemności.</p>
+          <p>To wtedy zadzwonił do Nikodema. Nie przejmował się chaosem ani brakiem rodziców — w zamian chciał znaleźć bezpieczeństwo, spokój i odrobinę mądrości. A Nikodem miał ją w sobie.</p>
+        </div>
       </article>
+
       <article class="chapter" id="rozdzial-3">
-        <div class="chapter-art scene-visitors" role="img" aria-label="Dwie podejrzane postacie na zaśnieżonej ulicy"><span class="scene-kicker">Scena 03</span><span class="scene-label">Ktoś kręci się na ulicy</span><div class="street-lamp" aria-hidden="true"></div><div class="silhouette silhouette-one" aria-hidden="true"></div><div class="silhouette silhouette-two" aria-hidden="true"></div><span class="art-snow" aria-hidden="true">❄</span></div>
-        <div class="chapter-content"><div class="chapter-number">Rozdział 03 <span>—</span> Podejrzani goście</div><h2>Bardzo mokra wizytówka</h2><p>Niedaleko domu kręcili się Harry i Marv. Zaglądali do okien i sprawdzali, które domy wyglądają na puste. Kevin zobaczył ich przez okno i poczuł, że coś jest nie tak.</p><p>Nikodem przypomniał mu, żeby nie wychodził na zewnątrz ani nie próbował sam zatrzymywać nieznajomych. Kevin zamknął drzwi, odsunął się od okien i zadzwonił po pomoc.</p><p>Harry i Marv przechwalali się swoją „mokrą wizytówką” — zostawianiem odkręconej wody w odwiedzanych domach. Nie zauważyli jednak, że Kevin już powiadomił dorosłych. Chłopcy czekali w bezpiecznym miejscu.</p><div class="chapter-quote">Gdy coś wydaje się niebezpieczne — odejdź w bezpieczne miejsce i wezwij pomoc.</div></div>
+        <div class="chapter-visual visual-bandits">
+          <div class="chapter-badge">Scena 03</div>
+          <div class="chapter-caption">Podejrzani na ulicy</div>
+          <div class="lamp"></div>
+          <div class="bandit bandit-one"></div>
+          <div class="bandit bandit-two"></div>
+          <div class="snow-sign">MOKRE BANDYTY</div>
+        </div>
+        <div class="chapter-text">
+          <p class="chapter-number">Rozdział 3</p>
+          <h2>Bardzo mokra wizytówka</h2>
+          <p>Nieopodal domu kręcili się Harry i Marv. Zaglądali do okien, sprawdzali, które domy są puste i niewiele brakowało, by weszli do środka. Kevin wypatrzył ich przez szyby i poczuł zimny dreszcz.</p>
+          <p>To był moment, w którym Nikodem przypomniał mu jedną ważną rzecz: nie działać zbyt szybko, nie ryzykować i nie wychodzić samemu na zewnątrz. Kevin zamknął drzwi, odsunął się od okna i natychmiast wezwał pomoc. W jego planie miała być odwaga, nie brawura.</p>
+          <p>Harry i Marv mówili też o swojej „mokrej wizytówce”, czyli o konsekwencjach, jakie zostawiają za sobą po odwiedzinach w pustych domach. Kevin dobrze wiedział, że nie był to dobry pomysł — ani dla niego, ani dla żadnego dziecka.</p>
+        </div>
       </article>
-      <article class="chapter chapter-reverse" id="rozdzial-4">
-        <div class="chapter-art scene-plan" role="img" aria-label="Plan domu i notatki przygotowane przez dwóch przyjaciół"><span class="scene-kicker">Scena 04</span><span class="scene-label">Plan przyjaciół</span><div class="map-card" aria-hidden="true"><span class="map-line"></span><span class="map-line"></span><span class="map-dot"></span><span class="map-star">✦</span></div><div class="pencil" aria-hidden="true"></div></div>
-        <div class="chapter-content"><div class="chapter-number">Rozdział 04 <span>—</span> Rozum zamiast ryzyka</div><h2>Plan generałów Kevina i Nikodema</h2><p>Kevin i Nikodem zebrali wszystkie ważne informacje: co widzieli, gdzie stali podejrzani i w którą stronę poszli. Zapisali je na kartce, żeby łatwo przekazać je dorosłym.</p><p>Chłopcy nie zastawiali pułapek i nie próbowali walczyć. Zostali w domu, zamknęli drzwi i czekali na pomoc. To był ich najlepszy plan — prosty, spokojny i bezpieczny.</p><p>Wkrótce przyjechali policjanci. Harry i Marv, którzy poślizgnęli się na śniegu podczas ucieczki, zostali zatrzymani. Kevin i Nikodem mogli wreszcie odetchnąć.</p><div class="chapter-quote">Najlepszy plan to taki, który chroni ludzi i nie naraża nikogo na niebezpieczeństwo.</div></div>
+
+      <article class="chapter reverse" id="rozdzial-4">
+        <div class="chapter-visual visual-plan">
+          <div class="chapter-badge">Scena 04</div>
+          <div class="chapter-caption">Plan przyjaciół</div>
+          <div class="map-card">
+            <span class="map-line a"></span>
+            <span class="map-line b"></span>
+            <span class="map-dot"></span>
+            <span class="map-star">✦</span>
+          </div>
+          <div class="pencil"></div>
+        </div>
+        <div class="chapter-text">
+          <p class="chapter-number">Rozdział 4</p>
+          <h2>Plan generałów Kevina i Nikodema</h2>
+          <p>Kevin i Nikodem rozrysowali wszystko: ślady, podejrzane osoby, strategiczne miejsca i świętą zasadę: bezpieczeństwo ponad brawurę. To był plan, z którego nie wynikało żadne niepotrzebne ryzyko, tylko odpowiedzialna odwaga.</p>
+          <p>Chłopcy nie chcieli walczyć, tylko działać mądrze. Zostali w domu, zamknęli drzwi i czekali na pomoc, która miała nadejść w porę. Gdy pojawili się policjanci, Harry i Marv zgięli się pod ciężarem własnych pomyłek i niechlujnych decyzji.</p>
+          <p>Największą siłą Kevina okazał się nie strach, lecz zimna głowa i szybka decyzja. Nikodem pomógł mu spojrzeć na sytuację bez paniki i bez odbierania dzielności jako odwagi do złych rzeczy.</p>
+        </div>
       </article>
+
       <article class="chapter" id="rozdzial-5">
-        <div class="chapter-art scene-christmas" role="img" aria-label="Choinka rozświetlająca ciepły, świąteczny pokój"><span class="scene-kicker">Scena 05</span><span class="scene-label">Wreszcie razem</span><div class="tree" aria-hidden="true"><i></i><b></b><em></em><span>✦</span></div><div class="gift gift-one" aria-hidden="true"></div><div class="gift gift-two" aria-hidden="true"></div></div>
-        <div class="chapter-content"><div class="chapter-number">Rozdział 05 <span>—</span> Świąteczny finał</div><h2>Święta są lepsze razem</h2><p>Kiedy wszystko się uspokoiło, Kevin usiadł przy choince. Teraz cisza wydawała mu się smutna. Zatęsknił za rodziną, za śmiechem i nawet za zwykłym domowym zamieszaniem.</p><p>Nikodem został z nim na telefonie, aż przyjechali zaufani dorośli. Niedługo potem wróciła mama Kevina. Przytuliła go mocno, a w domu znów rozległy się radosne głosy.</p><p>Kevin zrozumiał, że samodzielność jest ważna, ale w trudnej chwili trzeba poprosić o pomoc. A Nikodem wiedział, że przyjaźń to wspieranie się — szczególnie wtedy, gdy robi się trudno.</p><div class="chapter-quote">Nie trzeba być dużym, żeby być odważnym. Najpiękniej jest być razem.</div></div>
+        <div class="chapter-visual visual-christmas">
+          <div class="chapter-badge">Scena 05</div>
+          <div class="chapter-caption">Wreszcie razem</div>
+          <div class="christmas-tree">
+            <div class="trunk"></div>
+            <span class="tree-layer one"></span>
+            <span class="tree-layer two"></span>
+            <span class="tree-layer three"></span>
+            <span class="tree-star">✦</span>
+          </div>
+          <div class="gift gift-one"></div>
+          <div class="gift gift-two"></div>
+        </div>
+        <div class="chapter-text">
+          <p class="chapter-number">Rozdział 5</p>
+          <h2>Święta są lepsze razem</h2>
+          <p>Gdy wszystko się uspokoiło, Kevin usiadł przy choince. Dziwnie głośna cisza stała się jednocześnie smutna i ciepła. Chłopiec po raz pierwszy zrozumiał, że samotność nie jest tak przyjemna jak myślał, i że w święta najważniejsze jest to, by nie być sam.</p>
+          <p>Wtedy wróciła mama. Kevin rzucił się jej w ramiona, a w domu rozległ się śmiech, radosny panika i zwykła, cudowna chaosowa energia. Nikodem był przy nim w najtrudniejszym momencie i pokazał, że przyjaźń to nie tylko zabawa — to odporność w ciężkim czasie.</p>
+          <p>Na koniec Kevin pojął jedno ważne zdanie: nie trzeba być dorosłym, żeby być odważnym, i nie trzeba mieć wielkiego domu, żeby mieć wielkie serce.</p>
+        </div>
       </article>
     </section>
 
-    <section class="characters page-width" id="bohaterowie"><p class="eyebrow dark-eyebrow"><span></span> Bohaterowie opowieści</p><h2>Każdy ma swoją supermoc</h2><div class="character-grid"><div class="character-card"><div class="character-icon kevin-icon" aria-hidden="true">K</div><h3>Kevin</h3><p>Pomysłowy i odważny. Wie, że proszenie o pomoc to też oznaka siły.</p></div><div class="character-card"><div class="character-icon niko-icon" aria-hidden="true">N</div><h3>Nikodem</h3><p>Uważny przyjaciel, który potrafi słuchać i podpowiedzieć bezpieczne rozwiązanie.</p></div><div class="character-card"><div class="character-icon snow-icon" aria-hidden="true">❄</div><h3>Świąteczna odwaga</h3><p>Spokój, współpraca i zaufanie dorosłym pomagają przejść przez trudną sytuację.</p></div></div></section>
-    <section class="ending page-width" id="koniec"><div class="ending-star" aria-hidden="true">✦</div><p class="eyebrow">Koniec opowieści</p><h2>Najlepsze święta<br><em>są razem.</em></h2><p>Dla Nikodema — z życzeniami wesołych, ciepłych i pełnych przygód Świąt.</p><a class="button button-gold" href="#start">Wróć na początek ↑</a></section>
+    <section class="characters page-width" id="bohaterowie">
+      <p class="section-kicker">Bohaterowie</p>
+      <h2>Każdy ma swoją supermoc</h2>
+      <div class="character-grid">
+        <article class="character-card">
+          <div class="badge-char kevin">K</div>
+          <h3>Kevin</h3>
+          <p>Sprytny, odważny, zaradny. Potrafi myśleć w sytuacjach stresowych, a nawet wtedy zachowuje zimną krew.</p>
+        </article>
+        <article class="character-card">
+          <div class="badge-char niko">N</div>
+          <h3>Nikodem</h3>
+          <p>Uważny przyjaciel, który podpowiada, uspokaja i przypomina, że bezpieczeństwo zawsze jest ważniejsze od impulsu.</p>
+        </article>
+        <article class="character-card">
+          <div class="badge-char snow">❄</div>
+          <h3>Świąteczna odwaga</h3>
+          <p>Największa moc nie jest zewnętrzna — to mądrość, spokój i decyzje, które chronią innych.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="generator page-width" id="generator">
+      <p class="section-kicker">Prompty do generatora obrazów</p>
+      <h2>Filmowe sceny w stylu oryginalnym</h2>
+      <div class="prompt-grid">
+        <article class="prompt-card">
+          <h3>Rozdział 1</h3>
+          <p>Świąteczny dom z wielkim chaosem przed wyjazdem, walizki, rozrzucone kurtki i dzieci biegające po korytarzu, zimne światło przed wieczorem, mocne, filmowe światło, realistyczne detale, śnieg na ulicy, duża kompozycja, cinematic composition, warm winter atmosphere.</p>
+        </article>
+        <article class="prompt-card">
+          <h3>Rozdział 2</h3>
+          <p>Kevin stoi samotnie w pustym salonie, zimny poranek, światło wchodzące przez okno, bardzo ciche wnętrze, subtelne cienie, wielkie okna, klasyczny dom z lat 90., lekko nostalgiczny klimat, cinematic portrait, soft natural light, snow outside.</p>
+        </article>
+        <article class="prompt-card">
+          <h3>Rozdział 3</h3>
+          <p>Mokre bandyty na zaśnieżonej ulicy w ciemnym wieczornym świetle, mroźna atmosfera, niepokojący, ale nie groteskowy klimat, ilustracyjna scena z filmowego plakatu, dramatic contrast, wet pavement, cold blue tones, cinematic realism.</p>
+        </article>
+        <article class="prompt-card">
+          <h3>Rozdział 4</h3>
+          <p>Kevin i Nikodem siedzą przy stole z notatką i planem, analizują sytuację, lampy, zimowe światło, ciepły kontrast, spokojna, mądra energia, subtelna twarzowa ekspresja, filmowy kadr, styl posteru, detailed scene.</p>
+        </article>
+        <article class="prompt-card">
+          <h3>Rozdział 5</h3>
+          <p>Świąteczny pokój, choinka, ciepłe światło, rodzina w objęciach, szczęście i końcowa radość, mistyka świątecznej atmosfery, klasyczne amerykańskie wnętrze, delikatne białe płaszcze śniegu za oknem, cinematic warm tones.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="ending page-width">
+      <p class="section-kicker">Koniec</p>
+      <h2>Najlepsze święta<br><span>są razem</span></h2>
+      <p>Nie trzeba być dorosłym, by być odważnym. Wystarczy przyjaciel, odrobina zimowego mroku i odwaga do słusznego działania.</p>
+      <a class="button button-gold" href="#top">Wróć na górę</a>
+    </section>
   </main>
-  <footer class="site-footer"><p>Fanowska, nieoficjalna opowieść stworzona dla Nikodema.</p><p>Postacie Kevina i Mokrych Bandytów pochodzą z filmu <em>Kevin sam w domu</em>. Ta strona nie jest oficjalnie związana z filmem ani jego twórcami.</p></footer>
-  <noscript><p class="noscript-message">Włącz JavaScript, aby skorzystać z ustawień czytania i animacji śniegu.</p></noscript>
+
+  <footer class="site-footer">
+    <p>Fanowska, nieoficjalna opowieść dla małych odważnych czytelników.</p>
+    <p>To nie jest oficjalna strona filmu. To oryginalna historia inspirowana świątecznym klimatem klasycznej komedii.</p>
+  </footer>
 </body>
 </html>

@@ -1,56 +1,57 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const progressBar = document.querySelector("#progressBar");
-  const snowLayer = document.querySelector("#snowLayer");
-  const snowToggle = document.querySelector("#snowToggle");
-  const menuToggle = document.querySelector("#menuToggle");
-  const navLinks = document.querySelector("#navLinks");
-  const textLarger = document.querySelector("#textLarger");
-  const textSmaller = document.querySelector("#textSmaller");
-  const printPage = document.querySelector("#printPage");
+  const progressBar = document.getElementById("progressBar");
+  const snowLayer = document.getElementById("snowLayer");
+  const snowToggle = document.getElementById("snowToggle");
+  const menuToggle = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("navLinks");
+  const textSmaller = document.getElementById("textSmaller");
+  const textLarger = document.getElementById("textLarger");
+  const printPage = document.getElementById("printPage");
 
-  const updateReadingProgress = () => {
-    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
+  const updateProgress = () => {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
     if (progressBar) progressBar.style.width = `${Math.min(progress, 100)}%`;
   };
-  window.addEventListener("scroll", updateReadingProgress, { passive: true });
-  window.addEventListener("resize", updateReadingProgress);
-  updateReadingProgress();
+  updateProgress();
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  window.addEventListener("resize", updateProgress);
 
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const createSnow = () => {
-    if (!snowLayer || prefersReducedMotion) return;
-    const count = window.innerWidth < 650 ? 22 : 42;
+    if (!snowLayer || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const flakeCount = window.innerWidth < 700 ? 20 : 42;
     const fragment = document.createDocumentFragment();
-    for (let i = 0; i < count; i += 1) {
+    for (let i = 0; i < flakeCount; i++) {
       const flake = document.createElement("span");
       flake.className = "snowflake";
-      flake.textContent = Math.random() > 0.5 ? "•" : "✦";
+      flake.textContent = i % 2 === 0 ? "✦" : "•";
       flake.style.left = `${Math.random() * 100}%`;
-      flake.style.fontSize = `${5 + Math.random() * 9}px`;
-      flake.style.animationDuration = `${7 + Math.random() * 12}s`;
-      flake.style.animationDelay = `${Math.random() * -18}s`;
-      flake.style.opacity = `${0.25 + Math.random() * 0.65}`;
+      flake.style.animationDuration = `${10 + Math.random() * 12}s`;
+      flake.style.animationDelay = `${Math.random() * -20}s`;
+      flake.style.fontSize = `${8 + Math.random() * 12}px`;
+      flake.style.opacity = `${0.3 + Math.random() * 0.7}`;
       fragment.appendChild(flake);
     }
-    snowLayer.replaceChildren(fragment);
+    snowLayer.textContent = "";
+    snowLayer.appendChild(fragment);
   };
   createSnow();
 
   if (snowToggle) {
     snowToggle.addEventListener("click", () => {
-      const snowIsOff = document.body.classList.toggle("no-snow");
-      snowToggle.setAttribute("aria-pressed", String(!snowIsOff));
-      snowToggle.textContent = snowIsOff ? "❄ Śnieg: wyłączony" : "❄ Śnieg: włączony";
+      const off = document.body.classList.toggle("no-snow");
+      snowToggle.textContent = off ? "❄ Śnieg: wyłączony" : "❄ Śnieg: włączony";
+      if (off && snowLayer) snowLayer.style.display = "none";
+      else if (snowLayer) snowLayer.style.display = "block";
     });
   }
 
   if (menuToggle && navLinks) {
     menuToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("is-open");
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      const open = navLinks.classList.toggle("is-open");
+      menuToggle.setAttribute("aria-expanded", String(open));
     });
     navLinks.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
@@ -58,31 +59,23 @@ document.addEventListener("DOMContentLoaded", () => {
         menuToggle.setAttribute("aria-expanded", "false");
       });
     });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        navLinks.classList.remove("is-open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.focus();
-      }
-    });
   }
 
-  let textScale = 1;
-  const minScale = 0.9;
-  const maxScale = 1.25;
-  const step = 0.1;
-  const applyTextScale = () => document.documentElement.style.setProperty("--text-size", textScale.toFixed(2));
-  if (textLarger) {
-    textLarger.addEventListener("click", () => {
-      textScale = Math.min(maxScale, textScale + step);
-      applyTextScale();
-    });
-  }
+  let size = 1;
+  const applySize = () => document.documentElement.style.setProperty("--text-size", size.toFixed(2));
   if (textSmaller) {
     textSmaller.addEventListener("click", () => {
-      textScale = Math.max(minScale, textScale - step);
-      applyTextScale();
+      size = Math.max(0.9, size - 0.08);
+      applySize();
     });
   }
-  if (printPage) printPage.addEventListener("click", () => window.print());
+  if (textLarger) {
+    textLarger.addEventListener("click", () => {
+      size = Math.min(1.25, size + 0.08);
+      applySize();
+    });
+  }
+  if (printPage) {
+    printPage.addEventListener("click", () => window.print());
+  }
 });
